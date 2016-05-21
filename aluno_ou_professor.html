@@ -1,0 +1,59 @@
+<!--  Página de login do aluno
+Bootstrap base: http://bootsnipp.com/snippets/featured/mix-amp-match-register
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="aluno_ou_professor.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <meta charset="utf-8"> 
+
+  </head>
+
+  <body>
+       <div class="container-fluid">
+
+          <div class="row" style="margin-top:200px">
+
+            <div class="col-md-5 col-md-offset-1 vcenter">
+                  <h3 class="form-signin-heading">Já tem cadastro? Faça o login aqui!</h3> 
+                  <hr class="colorgraph"><br>
+            </div>       
+              
+            <div class="col-md-5 vcenter">
+              <h3 class="form-signin-heading">Junte-se a nós, registre-se aqui!</h3>    
+              <hr class="colorgraph"><br>
+             </div> 
+                  
+          </div>
+
+          <div class="row">
+              <div class="col-md-5 col-md-offset-1 vcenter">
+                  <form action="" method="post" name="Login_Form" class="form-signin" id="logar">       <!-- form do login -->         
+                    <input type="text" class="form-control" name="Username" placeholder="Usuário" required="" autofocus="" />
+                    </br>
+                    <input type="password" class="form-control" name="Password" placeholder="Senha" required=""/>          
+                    </br>
+                    <button class="btn btn-lg btn-success btn-block"  name="Submit" value="Login" type="Submit">Login</button>        
+                  </form>     
+              </div>
+
+              <div class="col-md-5 vcenter">
+                <input type="button" value="Registrar aluno" class="btn btn-primary btn-block btn-lg" onclick="location.href = './cadastro_aluno.html';" tabindex="7">
+                </br> 
+                <input type="button" value="Registrar professor" class="btn btn-primary btn-block btn-lg" onclick="location.href = './cadastro_professor.html';" tabindex="7">
+              </div>
+
+          </div>
+
+      </div>
+  </body>
+</html>
