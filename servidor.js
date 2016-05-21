@@ -3,6 +3,10 @@
 var fs = require('fs');
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
 /*
 // Variaveis do banco de dados
 var mongoose = require('mongoose');
@@ -41,12 +45,11 @@ mongoose.connect('mongodb://localhost/test');
 */
 // Servidor
 function submitAluno(req, res) {
-	console.log('Aluno registrado');
-	console.log(request.body.user);
-
-	res.writeHead(200, {"Cotent-Type": "text/plain"});
-	res.write('Deu certo');
-	res.end();
+	console.log(req.body.first_name);
+	res.send(req.body.first_name);
+	//res.writeHead(200, {"Cotent-Type": "text/plain"});
+	// res.write('Deu certo');
+	// res.end();
 
 	//res.writeHead(200, {"Cotent-Type": "text/html"});
 	//fs.createReadStream("./index.html").pipe(res);
