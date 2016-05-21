@@ -1,13 +1,14 @@
 // Variaveis do servidor
-var http = require('http');
+//var http = require('http');
 var fs = require('fs');
-var app = require('express');
-
+var express = require('express');
+var app = express();
+/*
 // Variaveis do banco de dados
 var mongoose = require('mongoose');
 var db = mongoose.connection;
 
-/*Banco de dados - Mongodb*/
+//Banco de dados - Mongodb
 db.on('error', console.error); // Avisa que houve erro na conexao
 db.once('open', function(){
 	console.log('Conectado ao MongoDB');
@@ -37,17 +38,27 @@ var mentorSchema = new mongoose.Schema({
 var Mentor = mongoose.model('Mentor', mentorSchema);
 
 mongoose.connect('mongodb://localhost/test');
+*/
+// Servidor
+function submitAluno(req, res) {
+	console.log('Aluno registrado');
+	console.log(request.body.user);
 
-//Servidor
-function send404Error(res) {
-	res.writeHead(404, {"Content-Type": "text/plain"});
-	res.write("Error 404: Page not found");
+	res.writeHead(200, {"Cotent-Type": "text/plain"});
+	res.write('Deu certo');
 	res.end();
+
+	//res.writeHead(200, {"Cotent-Type": "text/html"});
+	//fs.createReadStream("./index.html").pipe(res);
 }
 
-function onRequest(req, res) {
+app.post('/aluno', submitAluno);
 
-}
+app.get('/', function(req, res){
+	res.writeHead(200, {"Cotent-Type": "text/html"});
+	fs.createReadStream("./index.html").pipe(res);
+});
 
-http.createServer(onRequest).listen(8080);
-console.log("Server is running...");
+app.listen(8080, function() {
+	console.log('app listening port 8080');
+});
