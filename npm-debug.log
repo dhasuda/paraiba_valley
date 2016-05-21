@@ -1,0 +1,180 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'express-generator' ]
+2 info using npm@2.15.1
+3 info using node@v4.4.4
+4 verbose install initial load of /usr/local/lib/package.json
+5 verbose readDependencies loading dependencies from /usr/local/lib/package.json
+6 silly cache add args [ 'express-generator', null ]
+7 verbose cache add spec express-generator
+8 silly cache add parsed spec Result {
+8 silly cache add   raw: 'express-generator',
+8 silly cache add   scope: null,
+8 silly cache add   name: 'express-generator',
+8 silly cache add   rawSpec: '',
+8 silly cache add   spec: 'latest',
+8 silly cache add   type: 'tag' }
+9 silly addNamed express-generator@latest
+10 verbose addNamed "latest" is being treated as a dist-tag for express-generator
+11 info addNameTag [ 'express-generator', 'latest' ]
+12 silly mapToRegistry name express-generator
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry https://registry.npmjs.org/
+15 silly mapToRegistry data Result {
+15 silly mapToRegistry   raw: 'express-generator',
+15 silly mapToRegistry   scope: null,
+15 silly mapToRegistry   name: 'express-generator',
+15 silly mapToRegistry   rawSpec: '',
+15 silly mapToRegistry   spec: 'latest',
+15 silly mapToRegistry   type: 'tag' }
+16 silly mapToRegistry uri https://registry.npmjs.org/express-generator
+17 verbose addNameTag registry:https://registry.npmjs.org/express-generator not in flight; fetching
+18 verbose request uri https://registry.npmjs.org/express-generator
+19 verbose request no auth needed
+20 info attempt registry request try #1 at 19:28:20
+21 verbose request id ffde12ff207dad08
+22 verbose etag "97X8Q8NRYWL4AX9C6M88EZ7T2"
+23 http request GET https://registry.npmjs.org/express-generator
+24 http 304 https://registry.npmjs.org/express-generator
+25 verbose headers { date: 'Sat, 21 May 2016 22:28:20 GMT',
+25 verbose headers   via: '1.1 varnish',
+25 verbose headers   'cache-control': 'max-age=300',
+25 verbose headers   etag: '"97X8Q8NRYWL4AX9C6M88EZ7T2"',
+25 verbose headers   age: '0',
+25 verbose headers   connection: 'keep-alive',
+25 verbose headers   'x-served-by': 'cache-jfk1040-JFK',
+25 verbose headers   'x-cache': 'HIT',
+25 verbose headers   'x-cache-hits': '1',
+25 verbose headers   'x-timer': 'S1463869700.827889,VS0,VE399',
+25 verbose headers   vary: 'Accept-Encoding' }
+26 silly get cb [ 304,
+26 silly get   { date: 'Sat, 21 May 2016 22:28:20 GMT',
+26 silly get     via: '1.1 varnish',
+26 silly get     'cache-control': 'max-age=300',
+26 silly get     etag: '"97X8Q8NRYWL4AX9C6M88EZ7T2"',
+26 silly get     age: '0',
+26 silly get     connection: 'keep-alive',
+26 silly get     'x-served-by': 'cache-jfk1040-JFK',
+26 silly get     'x-cache': 'HIT',
+26 silly get     'x-cache-hits': '1',
+26 silly get     'x-timer': 'S1463869700.827889,VS0,VE399',
+26 silly get     vary: 'Accept-Encoding' } ]
+27 verbose etag https://registry.npmjs.org/express-generator from cache
+28 verbose get saving express-generator to /Users/davigrossihasuda/.npm/registry.npmjs.org/express-generator/.cache.json
+29 verbose correctMkdir /Users/davigrossihasuda/.npm correctMkdir not in flight; initializing
+30 silly addNameTag next cb for express-generator with tag latest
+31 silly addNamed express-generator@4.13.1
+32 verbose addNamed "4.13.1" is a plain semver version for express-generator
+33 silly cache afterAdd express-generator@4.13.1
+34 verbose afterAdd /Users/davigrossihasuda/.npm/express-generator/4.13.1/package/package.json not in flight; writing
+35 verbose correctMkdir /Users/davigrossihasuda/.npm correctMkdir not in flight; initializing
+36 verbose afterAdd /Users/davigrossihasuda/.npm/express-generator/4.13.1/package/package.json written
+37 silly install resolved [ { name: 'express-generator',
+37 silly install resolved     description: 'Express\' application generator',
+37 silly install resolved     version: '4.13.1',
+37 silly install resolved     author: { name: 'TJ Holowaychuk', email: 'tj@vision-media.ca' },
+37 silly install resolved     contributors: [ [Object], [Object], [Object], [Object], [Object], [Object] ],
+37 silly install resolved     keywords:
+37 silly install resolved      [ 'express',
+37 silly install resolved        'framework',
+37 silly install resolved        'sinatra',
+37 silly install resolved        'web',
+37 silly install resolved        'rest',
+37 silly install resolved        'restful',
+37 silly install resolved        'router',
+37 silly install resolved        'app',
+37 silly install resolved        'api' ],
+37 silly install resolved     repository:
+37 silly install resolved      { type: 'git',
+37 silly install resolved        url: 'git+https://github.com/expressjs/generator.git' },
+37 silly install resolved     license: 'MIT',
+37 silly install resolved     dependencies: { commander: '2.7.1', mkdirp: '0.5.1', 'sorted-object': '1.0.0' },
+37 silly install resolved     main: 'bin/express',
+37 silly install resolved     preferGlobal: true,
+37 silly install resolved     bin: { express: './bin/express' },
+37 silly install resolved     devDependencies: { mocha: '2.2.5', rimraf: '~2.2.8', supertest: '1.0.1' },
+37 silly install resolved     engines: { node: '>= 0.10' },
+37 silly install resolved     files: [ 'LICENSE', 'bin/', 'templates/' ],
+37 silly install resolved     scripts:
+37 silly install resolved      { test: 'mocha --reporter spec --bail --check-leaks test/',
+37 silly install resolved        'test-ci': 'mocha --reporter spec --check-leaks test/' },
+37 silly install resolved     gitHead: '4936300029c48655cadca63d063560f67f28c79e',
+37 silly install resolved     bugs: { url: 'https://github.com/expressjs/generator/issues' },
+37 silly install resolved     homepage: 'https://github.com/expressjs/generator',
+37 silly install resolved     _id: 'express-generator@4.13.1',
+37 silly install resolved     _shasum: '58351b31f0c7da770c2872bf2a50b9e9359f9968',
+37 silly install resolved     _from: 'express-generator@latest',
+37 silly install resolved     _npmVersion: '1.4.28',
+37 silly install resolved     _npmUser: { name: 'dougwilson', email: 'doug@somethingdoug.com' },
+37 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object], [Object] ],
+37 silly install resolved     dist:
+37 silly install resolved      { shasum: '58351b31f0c7da770c2872bf2a50b9e9359f9968',
+37 silly install resolved        tarball: 'https://registry.npmjs.org/express-generator/-/express-generator-4.13.1.tgz' },
+37 silly install resolved     directories: {},
+37 silly install resolved     _resolved: 'https://registry.npmjs.org/express-generator/-/express-generator-4.13.1.tgz',
+37 silly install resolved     readme: 'ERROR: No README data found!' } ]
+38 info install express-generator@4.13.1 into /usr/local/lib
+39 info installOne express-generator@4.13.1
+40 verbose installOne of express-generator to /usr/local/lib not in flight; installing
+41 verbose correctMkdir /Users/davigrossihasuda/.npm/_locks correctMkdir not in flight; initializing
+42 verbose lock using /Users/davigrossihasuda/.npm/_locks/express-generator-d3cc1706f4adef09.lock for /usr/local/lib/node_modules/express-generator
+43 silly install write writing express-generator 4.13.1 to /usr/local/lib/node_modules/express-generator
+44 verbose unbuild lib/node_modules/express-generator
+45 info preuninstall express-generator@4.13.1
+46 info uninstall express-generator@4.13.1
+47 verbose unbuild rmStuff express-generator@4.13.1 from /usr/local/lib/node_modules
+48 silly gentlyRm /usr/local/bin/express is being gently removed
+49 silly gentlyRm verifying /usr/local is an npm working directory
+50 silly gentlyRm containing path /usr/local is under npm's control, in /usr/local
+51 silly gentlyRm deletion target /usr/local/bin/express is under /usr/local
+52 verbose gentlyRm vacuuming from /usr/local/bin/express up to /usr/local
+53 silly vacuum-fs removing /usr/local/bin/express
+54 silly vacuum-fs quitting because other entries in /usr/local/bin
+55 info postuninstall express-generator@4.13.1
+56 silly gentlyRm /usr/local/lib/node_modules/express-generator is being purged from base /usr/local
+57 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/express-generator
+58 silly vacuum-fs purging /usr/local/lib/node_modules/express-generator
+59 verbose unlock done using /Users/davigrossihasuda/.npm/_locks/express-generator-d3cc1706f4adef09.lock for /usr/local/lib/node_modules/express-generator
+60 verbose stack Error: EACCES: permission denied, rmdir '/usr/local/lib/node_modules/express-generator'
+60 verbose stack     at Error (native)
+61 verbose cwd /Users/davigrossihasuda/Documents/hackathon/paraiba_valley
+62 error Darwin 15.5.0
+63 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "-g" "express-generator"
+64 error node v4.4.4
+65 error npm  v2.15.1
+66 error path /usr/local/lib/node_modules/express-generator
+67 error code EACCES
+68 error errno -13
+69 error syscall rmdir
+70 error Error: EACCES: permission denied, rmdir '/usr/local/lib/node_modules/express-generator'
+70 error     at Error (native)
+70 error  { [Error: EACCES: permission denied, rmdir '/usr/local/lib/node_modules/express-generator']
+70 error   errno: -13,
+70 error   code: 'EACCES',
+70 error   syscall: 'rmdir',
+70 error   path: '/usr/local/lib/node_modules/express-generator' }
+71 error Please try running this command again as root/Administrator.
+72 verbose exit [ -13, true ]
+73 verbose unbuild lib/node_modules/express-generator
+74 info preuninstall express-generator@4.13.1
+75 info uninstall express-generator@4.13.1
+76 verbose unbuild rmStuff express-generator@4.13.1 from /usr/local/lib/node_modules
+77 silly gentlyRm /usr/local/bin/express is being gently removed
+78 silly gentlyRm verifying /usr/local is an npm working directory
+79 silly gentlyRm containing path /usr/local is under npm's control, in /usr/local
+80 silly gentlyRm deletion target /usr/local/bin/express is under /usr/local
+81 verbose gentlyRm vacuuming from /usr/local/bin/express up to /usr/local
+82 info postuninstall express-generator@4.13.1
+83 silly gentlyRm /usr/local/lib/node_modules/express-generator is being purged from base /usr/local
+84 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/express-generator
+85 silly vacuum-fs purging /usr/local/lib/node_modules/express-generator
+86 error error rolling back Error: EACCES: permission denied, rmdir '/usr/local/lib/node_modules/express-generator'
+86 error error rolling back     at Error (native)
+86 error error rolling back  { [Error: EACCES: permission denied, rmdir '/usr/local/lib/node_modules/express-generator']
+86 error error rolling back   errno: -13,
+86 error error rolling back   code: 'EACCES',
+86 error error rolling back   syscall: 'rmdir',
+86 error error rolling back   path: '/usr/local/lib/node_modules/express-generator' }

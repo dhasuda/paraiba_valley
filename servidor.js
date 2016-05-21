@@ -7,46 +7,47 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-/*
+
 // Variaveis do banco de dados
 var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/test');
 var db = mongoose.connection;
-
-//Banco de dados - Mongodb
-db.on('error', console.error); // Avisa que houve erro na conexao
-db.once('open', function(){
-	console.log('Conectado ao MongoDB');
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
 });
 
+// Banco de dados --------------------------------------------------
 
-// aluno
 var alunoSchema = new mongoose.Schema({
-	nome: String,
-	email: String,
-	senha: String,
-	curso: String,
-	serie: String
+	nome: String
 });
-
 var Aluno = mongoose.model('Aluno', alunoSchema);
 
-// mentor
-var mentorSchema = new mongoose.Schema({
-	nome: String,
-	email: String,
-	senha: String,
-	curso: String,
-	ano: String
+var joao = new Aluno({
+	nome: 'davi'
 });
 
+// joao.save(function(err, joao) {
+// 	if (err) return console.error(err);
+// });
+
+// Aluno.find(function(err, alunos) {
+// 	if (err) return console.error(err);
+// 	console.log(alunos);
+// })
+
+// Mentor
+var mentorSchema = new mongoose.Schema({
+	nome: String
+});
 var Mentor = mongoose.model('Mentor', mentorSchema);
 
-mongoose.connect('mongodb://localhost/test');
-*/
-// Servidor
+
+// Servidor --------------------------------------------------------
 function submitAluno(req, res) {
 	console.log(req.body.first_name);
-	res.send(req.body.first_name);
+	res.send(req.body.password);
 	//res.writeHead(200, {"Cotent-Type": "text/plain"});
 	// res.write('Deu certo');
 	// res.end();
