@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- CSS para a pagina de chat -->
+        <link rel="stylesheet" href="chat-style.css">
+
+        <!-- jQuery library -->
+        <script     src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script     src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <meta charset="utf-8">
+        <title>Chat</title>
+    </head>
+    <body>
+        <div id='content'>
+            <h1>Converse e tire suas dúvidas!</h1>
+            <div id="chat">
+                <ul id="messages"></ul>
+                <form id="sendMsg" action="">
+                    <input id="msg" autocomplete="off"><button type="button"class='btn-primary'>Enviar</button>
+                </form>
+            </div>
+        </div>
+
+        <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+        <script>
+            var socket = io();
+
+            //Envio da mensagem
+            $('#sendMsg').submit(function(){
+                //Emite o evento
+                socket.emit('send message', $('#msg').val());
+                $('#msg').val('');
+                return false;
+            });
+
+            //Evendo para imprimir uma mensagem nova
+            socket.on('show message', function(msg){
+                $('#messages').append($('<li>').text(msg));
+            });
+
+        </script>
+
+
+    </body>
+</html>
