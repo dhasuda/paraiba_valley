@@ -36,7 +36,7 @@ Bootstrap base: http://bootsnipp.com/snippets/featured/mix-amp-match-register
 
 
       <!-- início dados do site -->
-      <h3>Dados do site</h2>
+      <h4>Dados do site</h4>
 
       <div class="form-group">
         <input type="text" name="usuario" id="usuario" class="form-control input-lg" placeholder="Usuário" tabindex="3">
@@ -64,7 +64,7 @@ Bootstrap base: http://bootsnipp.com/snippets/featured/mix-amp-match-register
 
       <!---  início dados faculdade  -->
       <hr class="colorgraph">   <!-- tracinho estiloso -->
-      <h3>Dados pessoais</h3>
+      <h4>Dados pessoais</h4>
       
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6">
@@ -80,43 +80,42 @@ Bootstrap base: http://bootsnipp.com/snippets/featured/mix-amp-match-register
         </div>
       </div>
       
-   
-
-      
       </br>
 
-     </br>
      
-      <i><h4>Escolher seu rumo profissional pode ser uma decisão muito difícil. Aqui na Paraíba Valley, nosso objetivo é ajudar tanto aqueles que já sabem o que querem quanto os que ainda estão em dúvida</h4></i>
+      <h4>Escolher seu rumo profissional pode ser uma decisão muito difícil. Aqui na Paraíba Valley, nosso objetivo é ajudar tanto aqueles que já sabem o que querem quanto os que ainda estão em dúvida. Você já tem uma carreira em mente?</h4>
+
       <select name = "decidido" id="decidido" onchange="checar(this, 'FLAG_decidido', 'IF_decidido');">
-        <option id="FLAG_decidido" value="1">Sim</option>
-        <option value="0" selected>Não</option>
+        <option id="FLAG_decidido" value="true">Sim</option>
+        <option value="false" selected>Não</option>
       </select>
 
       </br>
   
 
       <div id="IF_decidido" style="display:none;">
-        <h4>
+        <h5>
           Curso pretendido:
-        </h4>
+        </h5>
         <input type="text" name="curso" id="curso" class="form-control input-lg"  tabindex="3">
       </div>
 
-      <h4>Série escolar</h4>
+      <h5>Série escolar</h5>
            
       <select id="serie" name="serie" onchange="checar(this, 'FLAG_serie', 'IF_serie');">
-        <option value="Fundamental" selected>Ensino Fundamental</option>
+        
+        <option value="fundamental" selected>Ensino Fundamental</option>
         <option value="1ou2">1º ou 2º ano do Ensino Médio</option>
-        <option value="3" id="FLAG_serie">3º ano do Ensino Médio ou formado</option>        
+        <option value="3ouFormado" id="FLAG_serie">3º ano do Ensino Médio ou formado</option>        
+        
       </select>
 
       </br>
 
       <div id="IF_serie" style="display:none;">
-        <h4>
+        <h5>
           Vestibulares que prestará (Separar por barra):
-        </h4>
+        </h5>
         <h5>
           <i>
             Exemplo:Enem/Fuvest/Unesp
@@ -128,9 +127,9 @@ Bootstrap base: http://bootsnipp.com/snippets/featured/mix-amp-match-register
       </div> 
 
       <!-- Facilidades  -->
-      <h4>
+      <h5>
             Matérias em que apresenta facilidade:
-      </h4>
+      </h5>
            
       <div class="row">  
         <div class="col-md-4">              
@@ -214,9 +213,9 @@ Bootstrap base: http://bootsnipp.com/snippets/featured/mix-amp-match-register
 
       </br>
       <!--- Matérias com dificuldade -->
-      <h4>
+      <h5>
             Matérias em que apresenta dificuldade:
-      </h4>
+      </h5>
            
          <div class="row">  
         <div class="col-md-4">              
