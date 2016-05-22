@@ -41,6 +41,8 @@ var mentorSchema = new mongoose.Schema ({
 var Mentor = mongoose.model('Mentor', mentorSchema);
 
 // Servidor --------------------------------------------------------
+
+// Cadastro
 function onToInt(var str) {
 	if (str == 'on') return 1;
 	return 0;
@@ -123,6 +125,36 @@ function submitMent(req, res) {
 
 app.post('/submitAluno', submitAl);
 app.post('/submitMentor', submitMent);
+
+
+// Login
+function logIn(req, res) {
+	var user = req.body.login_email;
+	var pass = req.body.login_password;
+	var existe = 0; // 1: aluno, 2: mentor, 0: nao existe
+	Aluno.count({}, function( err, count){
+    	if (count > 0) {
+    		existe = 1;
+    	}
+	})
+
+	Mentor.count({}, function( err, count){
+    	if (count > 0) {
+    		existe = 2;
+    	}
+	})
+
+	if (existe == 1) {
+		// Login de aluno
+	}
+	else if (existe == 2) {
+		// Login de mentor
+	}
+	else {
+		// Login nao existe
+	}
+}
+app.post('/login', logIn)
 
 app.get('/', function(req, res){
 	res.writeHead(200, {"Cotent-Type": "text/html"});
