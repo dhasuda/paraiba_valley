@@ -22,8 +22,9 @@ Bootstrap base: http://bootsnipp.com/snippets/featured/mix-amp-match-register
 
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-    <form role="form" method="POST" action="/aluno">
-      <h2>Cadastro de Professor</h2>  <!-- originalmente tinha uma tag small aí dentro , falando free forever etc -->
+    <form role="form" method="post" action="/mentor">
+      <input id="tipo" name="tipo" type="hidden" value="mentor"> 
+      <h2>Cadastro de Mentor</h2>  <!-- originalmente tinha uma tag small aí dentro , falando free forever etc -->
       <hr class="colorgraph">   <!-- tracinho estiloso -->
 
 
@@ -87,22 +88,113 @@ Bootstrap base: http://bootsnipp.com/snippets/featured/mix-amp-match-register
       </div>
       
       <div class="row">  
-              
         <div class="col-xs-12 col-sm-6 col-md-12">              
           <div class="form-group">
-          <input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Curso pretendido" tabindex="3">
+          <input type="text" name="display_name" id="graduacao" name="graduacao" class="form-control input-lg" placeholder="Graduação" tabindex="3">
           </div>          
         </div>            
-
       </div> 
 
       <div class="row">  
         <div class="col-xs-12 col-sm-6 col-md-12">              
           <div class="form-group">
-          <input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Universidade pretendida" tabindex="3">
+          <input type="text" name="display_name" id="universidade" name = "universidade" class="form-control input-lg" placeholder="Universidade de graduação" tabindex="3">
           </div>          
         </div>                    
       </div>  
+
+      <div class="row">  
+        <div class="col-xs-12 col-sm-6 col-md-12">              
+          <div class="form-group">
+          <input type="text" name="display_name" id="conclusao" name="conclusao" class="form-control input-lg" placeholder="Ano de conclusão" tabindex="3">
+          </div>          
+        </div>            
+      </div> 
+
+      <h4>
+            Aptidões:
+      </h4>
+      <div class="row">  
+        <div class="col-md-4">              
+          <input type="checkbox" id="facilidade_mat" name="facilidade_mat">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Matemática
+          </span>
+        </div>
+
+        <div class="col-md-4">              
+          <input type="checkbox" id="facilidade_fis" name="facilidade_fis">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Física
+          </span>
+        </div>
+        
+        <div class="col-md-4">              
+          <input type="checkbox" id="facilidade_quim" name="facilidade_quim">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Química
+          </span>
+        </div>
+
+      </div>  
+
+      <div class="row">  
+        <div class="col-md-4">              
+          <input type="checkbox" iid="facilidade_hist" name="facilidade_hist">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            História
+          </span>
+        </div>
+
+        <div class="col-md-4">              
+          <input type="checkbox" id="facilidade_geo" name="facilidade_geo">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Geografia
+          </span>
+        </div>
+        
+        <div class="col-md-4">              
+          <input type="checkbox" id="facilidade_bio" name="facilidade_bio">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Biologia
+          </span>
+        </div>
+
+      </div>  
+
+      <div class="row">  
+        <div class="col-md-4">              
+          <input type="checkbox" id="facilidade_port" name="facilidade_port">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Português
+          </span>
+        </div>
+
+        <div class="col-md-4">              
+          <input type="checkbox" id="facilidade_red" name="facilidade_red">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Redação
+          </span>
+        </div>
+
+        <div class="col-md-4">              
+          <input type="checkbox" id="facilidade_filo" name="facilidade_filo">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Filosofia
+          </span>
+        </div>     
+      </div>  
+
+      <div class="row">  
+        <div class="col-md-4">              
+          <input type="checkbox" id="facilidade_socio" name="facilidade_socio">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Sociologia
+          </span>
+        </div>     
+      </div>  
+
+
       
       <!---  FIM DOS CAMPOS ADICIONAIS  -->
 

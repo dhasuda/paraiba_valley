@@ -7,7 +7,7 @@ Bootstrap base: http://bootsnipp.com/snippets/featured/mix-amp-match-register
   <head>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="aluno_ou_professor.css">
+    
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
@@ -15,6 +15,14 @@ Bootstrap base: http://bootsnipp.com/snippets/featured/mix-amp-match-register
     <!-- Latest compiled JavaScript -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <meta charset="utf-8"> 
+
+    <style>
+      .vcenter {
+        display: inline-block;
+        vertical-align: middle;
+        float: none;
+      }
+    </style>
 
   </head>
 
@@ -38,18 +46,23 @@ Bootstrap base: http://bootsnipp.com/snippets/featured/mix-amp-match-register
           <div class="row">
               <div class="col-md-5 col-md-offset-1 vcenter">
                   <form action="" method="post" name="Login_Form" class="form-signin" id="logar">       <!-- form do login -->         
-                    <input type="text" class="form-control" name="Username" placeholder="Usuário" required="" autofocus="" />
+                    <input type="text" class="form-control" name="login_email" placeholder="E-mail" required="" autofocus="" />
                     </br>
-                    <input type="password" class="form-control" name="Password" placeholder="Senha" required=""/>          
+                    <input type="password" class="form-control" name="login_password" placeholder="Senha" required=""/>          
                     </br>
                     <button class="btn btn-lg btn-success btn-block"  name="Submit" value="Login" type="Submit">Login</button>        
                   </form>     
               </div>
 
               <div class="col-md-5 vcenter">
-                <input type="button" value="Registrar aluno" class="btn btn-primary btn-block btn-lg" onclick="location.href = './cadastro_aluno.html';" tabindex="7">
+                <button type="button" class="btn btn-primary btn-block btn-lg" onclick="location.href = './cadastro_aluno.html';" tabindex="7">
+                  Registrar aluno
+                </button>
                 </br> 
-                <input type="button" value="Registrar mentor" class="btn btn-primary btn-block btn-lg" onclick="location.href = './cadastro_professor.html';" tabindex="7">
+                <button type="button" class="btn btn-primary btn-block btn-lg" onclick="location.href = './cadastro_professor.html';" tabindex="7">
+                  Registrar professor
+                </button>
+
               </div>
 
           </div>
