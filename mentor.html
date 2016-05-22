@@ -14,13 +14,16 @@
 	<body>
 
 
-		<img src="logo.png" style="margin-left:800px; margin-top:20px" width="250px">
+		<img src="/logo.png" style="margin-left:800px; margin-top:20px; height: 150px; width: auto;">
 		<div class="container-fluid">
+			<h1>Página do Mentor</h1>
+			<div id='nome'></div>
+			<div id='invites'></div>
 			<div class="row" style="margin-top:50px">
 				<div class="col-md-4">
 
 
-					<script>
+					<!--script>
 
 												    var parameters = location.search.substring(1).split("&");
 												    var usuario = Array()
@@ -40,8 +43,8 @@
 
 												   	}
 						document.write('<h2>Olá, ' + meuApelido + '!</h2>');
-					</script>
-					<table style ="margin-left:15px">
+					</script-->
+					<!--table style ="margin-left:15px">
 
 							<script type="text/javascript">
 
@@ -69,7 +72,7 @@
 
 							</script>
 
-					</table>
+					</table-->
 
 
 				</div>
@@ -79,7 +82,19 @@
 
 			</div>
 		</div>
+		<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+		<script>
+			var socket = io();
 
+			socket.on('welcome mentor', function(name){
+				$("#nome").append("<h2>Olá, " + name + "!</h2>");
+			});
+
+			socket.on('invite chat', function(student, name){
+				$("#invites").append('<h3>O aluno ' + student + ' está lhe chamando para uma conversa! Para iniciar, aperte no botão.</h3><a href="chat/' + name + '/' + student + '" class="btn btn-lg btn-primary">Conversar</a>');
+			})
+
+		</script>
 
 	</body>
 

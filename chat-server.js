@@ -17,6 +17,21 @@ app.get('/chat/:name/:other', function(req, res){
     res.sendFile(__dirname + '/chat.html');
 });
 
+app.get('/mentor/chat/:name/:other', function(req, res){
+    //console.log(req.params.name + ' entrou');
+    name = req.params.name;
+    other = req.params.other;
+    res.sendFile(__dirname + '/chat.html');
+});
+
+app.get('/mentor/:name', function(req, res){
+    //console.log(req.params.name + ' entrou');
+    name = req.params.name;
+    other = null;
+    //console.log(name);
+    res.sendFile(__dirname + '/mentor.html');
+});
+
 // Evento da conexao
 io.on('connection', function(socket){
 
@@ -25,10 +40,17 @@ io.on('connection', function(socket){
     users[socket.name] = socket;
     //console.log(socket.name + ' logou');
 
+    //Entrando na pagina do mentor
+    users[socket.name].emit('welcome mentor', socket.name);
+
     //io.emit('enter chat', socket.name);
-    users[socket.name].emit('enter chat', socket.name);
-    if (users.hasOwnProperty(socket.other))
+    if (socket.other != null)
+        users[socket.name].emit('enter chat', socket.name);
+
+    if (users.hasOwnProperty(socket.other)){
+        users[socket.other].emit('invite chat', socket.name, socket.other);
         users[socket.other].emit('enter chat', socket.name);
+    }
 
     socket.on('send message', function(msg){
         //io.emit('show message', {name: socket.name, text: msg});
@@ -38,12 +60,15 @@ io.on('connection', function(socket){
     });
 
     socket.on('disconnect', function(){
-        io.emit('disconnect message', socket.name);
+        if (socket.other != null)
+            io.emit('disconnect message', socket.name);
         delete users[socket.name];
     })
 });
 
 
-http.listen(3000, function(){
-    console.log('listening on port 3000');
-});
+/*http.listen(80, '0.0.0.0', function(){
+    console.log('listening on port 80');
+});*/
+
+http.listen(80, '0.0.0.0');
