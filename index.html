@@ -7,36 +7,50 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="icon.png">
     
-    <title>Paraíba Valley</title>
+    <title>Home - Quero dicas</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="css/justified-nav.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!-- Custom font style-->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
     <!-- Necessary for carousel -->
     <link href="css/carousel.css" rel="stylesheet">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
-    
+    <style>
+    body {
+      font: 400 16px Lato, sans-serif;
+      line-height: 1.8;
+      color: #818181;
+      font-family: Montserrat, sans-serif;
+    }
+    h2 {
+        font-size: 24px;
+        text-transform: uppercase;
+        color: #303030;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
+    h4 {
+        font-size: 19px;
+        line-height: 1.375em;
+        color: #303030;
+        font-weight: 400;
+        margin-bottom: 30px;
+    }
+    .jumbotron {
+      color: #fff;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      font-family: Montserrat, sans-serif;
+    } 
+    </style>
   </head>
 
   <body>
@@ -46,13 +60,13 @@
       <!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
       <div class="masthead">
-        <h3 class="text-muted">Nome do projeto</h3>
+        <img src="logo.png" style="height:90px; width:230px">
         <nav>
           <ul class="nav nav-justified">
             <li class="active"><a href="index.html">Página inicial</a></li>
             <li><a href="comofunciona.html">Como funciona</a></li>
             <li><a href="historias.html">Histórias de sucesso</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="sobre.html">Quem somos</a></li>
             <li><a href="contato.html">Contato</a></li>
           </ul>
         </nav>
@@ -75,13 +89,13 @@
 
             <div class="row">
             <div class="col-lg-6">
-              <div class="well">
-              <font color="#848484">
+              
+              <font color="white">
               <h1>Aprenda com quem já passou no vestibular!</h1>
               <p class="lead">Tenha contato com alunos das melhores faculdades do Brasil!</p>
-              <p><a class="btn btn-lg btn-success" href="aluno_ou_professor.html" role="button">Entre!</a></p>
+              <p><a class="btn btn-lg btn-primary" href="aluno_ou_professor.html" role="button">Entre!</a></p>
               </font>
-              </div>
+              
             </div>
             <div class="col-lg-6"></div>
             </div><!-- row-->
@@ -94,7 +108,7 @@
           <div class="carousel-caption">
             <div class="row">
             <div class="col-lg-6">
-              <font color="#0101DF">
+              <font color="white">
               <h1>Indeciso sobre que carreira seguir?</h1>
               <p class="lead">Tire suas dúvidas com profissionais de diversas áreas!</p>
               <p><a class="btn btn-lg btn-success" href="aluno_ou_professor.html" role="button">Entre!</a></p>
@@ -110,7 +124,7 @@
           <div class="carousel-caption">
             <div class="row">
             <div class="col-lg-6">
-              <font color="#0101DF">
+              <font color="white">
               <h1>Seja mentor de um aluno!</h1>
               <p class="lead">Ajude um jovem a ingressar na universidade!</p>
               <p><a class="btn btn-lg btn-success" href="aluno_ou_professor.html" role="button">Entre!</a></p>
@@ -138,26 +152,29 @@
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-lg-4">
+          <center><img class="img-circle" src="https://image.freepik.com/free-vector/university-degree-logo_23-2147501873.jpg" alt="Degree" width="150" heigth="150">
           <h2>Para vestibulandos</h2>
           <p>Receba ajuda e suporte daqueles que estudam na faculdade dos seus sonhos! </p>
-          <p><a class="btn btn-primary" href="#" role="button">Ver detalhes &raquo;</a></p>
+          </center>
         </div>
         <div class="col-lg-4">
+          <center><img class="img-circle" src="https://image.freepik.com/free-icon/teach_318-11671.jpg" alt="Teacher" width="150" heigth="150">
           <h2>Para universitários</h2>
-          <p>Ajude vestibulandos a conquistarem o seu sonho e tenha contato com profissionais de sucesso na sua área! </p>
-          <p><a class="btn btn-primary" href="#" role="button">Ver detalhes &raquo;</a></p>
-       </div>
+          <p>Seja um mentor e ajude um jovem a ingressar na universidade! </p>
+          </center>
+        </div>
         <div class="col-lg-4">
-          <h2>Para todos</h2>
-          <p>Conheça histórias de pessoas que alcançaram os seu sonhos!</p>
-          <p><a class="btn btn-primary" href="historias.html" role="button">Ver detalhes &raquo;</a></p>
+          <center><img class="img-circle" src="https://image.freepik.com/free-icon/first-prize-trophy_318-63597.jpg" alt="Trophy" width="150" heigth="150">
+          <h2>Todos ganham</h2>
+          <p>Alunos ingressam na universidade e mentores ganham brindes!</p>
+          </center>
         </div>
       </div>
 
     </div> <!-- /container -->
 
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </html>
