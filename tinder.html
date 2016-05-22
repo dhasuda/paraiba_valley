@@ -30,11 +30,22 @@
 		    	</div>
 		    </div>
 		</div> -->
-		<div class="container">
-			<div class="row" style="margin-top:150px">
-				<div class="col-md-3"></div>
+		<img src="logo.png" style="margin-left:800px; margin-top:20px" width="250px">
+		<div class="container-fluid">
+			<div class="row" style="margin-top:50px">
+				<div class="col-md-4">
+					<tr>
+						<div style="font-size:18px; font-family:Verdana; margin-left:15px">Tinder</div>
+					</tr>
+					</br>
+					<tr>
+						<div style="font-size:18px; font-family:Verdana; margin-left:15px">Chat</div>
+					</tr>
+					
+				</div>
+
 				
-				<div class = "col-md-6">	
+				<div class = "col-md-4">	
 					<div class="well">
 						<script type="text/javascript">  
 						  	function hash(str)
@@ -53,9 +64,32 @@
 						  			return "Local de graduação"
 						  		if(str=='conclusao')
 						  			return "Ano de conclusão"
+
+						  		if(str=='facilidade_0')
+						  			return "Matemática"
+						  		if(str=='facilidade_1')
+						  			return "Física"
+						  		if(str=='facilidade_2')
+						  			return "Química"
+						  		if(str=='facilidade_3')
+						  			return "Biologia"
+						  		if(str=='facilidade_4')
+						  			return "História"
+						  		if(str=='facilidade_5')
+						  			return "Geografia"
+						  		if(str=='facilidade_6')
+						  			return "Português"
+						  		if(str=='facilidade_7')
+						  			return "Redação"
+						  		if(str=='facilidade_8')
+						  			return "Filosofia"
+						  		if(str=='facilidade_9')
+						  			return "Sociologia"
+						  			
+
 						  		return "ERRO"
 						  	}
-						    
+						    var flag = false
 						    var parameters = location.search.substring(1).split("&");
 						    var names = Array()
 						    var values=Array()
@@ -67,11 +101,19 @@
 						    	values.push(aux[1])
 						   	}
 						   	document.write("<div style='margin-top:25px'></div>")
+						   	var flag = false
 						   	for (var i = 0; i < parameters.length; i++) 
 						    {
 						    	var aux=parameters[i].split('=')
 
-						    	document.write("<div style='font-size:20px; text-align:center; margin-top:5px'>"+hash(names[i])+": "+values[i]+"</div>")
+						    	if(flag)
+						    		document.write("div style='font-size:20px; text-align:center; margin-top:5px'>	"+hash(names[i])+"</div>")
+						    	else
+						    		document.write("<div style='font-size:20px; text-align:center; margin-top:5px'>"+hash(names[i])+": "+values[i]+"</div>")
+						    	if(names[i]=='conclusao'){
+						    		document.write("<div style='font-size:20px; text-align:center; margin-top:5px'>Facilidades:</div>")
+						    		flag=true
+						    	}
 						   	}
 						   	console.log(names)
 						   	console.log(values)	  
