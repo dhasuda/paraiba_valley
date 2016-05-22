@@ -5,7 +5,33 @@
         <link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
         <!-- CSS para a pagina de chat -->
-        <link rel="stylesheet" href="chat-style.css">
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            form #sendMsg {
+                background: #0000;
+                padding: 3px;
+                position: fixed;
+                bottom: 0;
+                width: 100px;
+            }
+
+            #messages {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            #messages li {
+                padding: 5px 10px;
+            }
+
+            #messages li:nth-child(odd){
+                background-color: #eee;
+            }
+        </style>
 
         <!-- jQuery library -->
         <script     src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
