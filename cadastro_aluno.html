@@ -5,14 +5,17 @@ Bootstrap base: http://bootsnipp.com/snippets/featured/mix-amp-match-register
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
+    
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="display.js"></script>
     <meta charset="utf-8"> 
 
   </head>
@@ -22,16 +25,21 @@ Bootstrap base: http://bootsnipp.com/snippets/featured/mix-amp-match-register
 
     <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-    <form role="form" method="POST" action="/aluno">
+    <form role="form" method="post" action="/aluno">
+
+      <input id="tipo" name="tipo" type="hidden" value="aluno"> <!--    FUNDAMENTAL **********************************************  -->
+
+
       <h2>Cadastro de Aluno</h2>  <!-- originalmente tinha uma tag small aí dentro , falando free forever etc -->
       <hr class="colorgraph">   <!-- tracinho estiloso -->
+
 
 
       <!-- início dados do site -->
       <h3>Dados do site</h2>
 
       <div class="form-group">
-        <input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Usuário" tabindex="3">
+        <input type="text" name="usuario" id="usuario" class="form-control input-lg" placeholder="Usuário" tabindex="3">
       </div>
       <div class="form-group">
         <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email" tabindex="4">
@@ -48,24 +56,10 @@ Bootstrap base: http://bootsnipp.com/snippets/featured/mix-amp-match-register
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-xs-4 col-sm-3 col-md-3">
-          <span class="button-checkbox">
-            
-            <!--
-            <button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>
-                        <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
-            -->
-          </span>
-        </div>
-        <!--
-        <div class="col-xs-8 col-sm-9 col-md-9">
-           By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
-        </div>
-      -->
-      </div>
       
+
       <!-- fim dados do site -->
+
 
 
       <!---  início dados faculdade  -->
@@ -86,32 +80,227 @@ Bootstrap base: http://bootsnipp.com/snippets/featured/mix-amp-match-register
         </div>
       </div>
       
-      <div class="row">  
-              
-        <div class="col-xs-12 col-sm-6 col-md-12">              
-          <div class="form-group">
-          <input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Curso pretendido" tabindex="3">
-          </div>          
-        </div>            
+   
 
-      </div> 
-
-      <div class="row">  
-        <div class="col-xs-12 col-sm-6 col-md-12">              
-          <div class="form-group">
-          <input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Universidade pretendida" tabindex="3">
-          </div>          
-        </div>                    
-      </div>  
       
-      <!---  FIM DOS CAMPOS ADICIONAIS  -->
+      </br>
+
+     
+     
+      <i><h4>Escolher seu rumo profissional pode ser uma decisão muito difícil. Aqui na Paraíba Valley, nosso objetivo é ajudar tanto aqueles que já sabem o que querem quanto os que ainda estão em dúvida</h4></i>
+      <select id="verDecidido" onchange="decididoCheck(this);">
+      <option id="TahDecidido" value="1">Sim</option>
+      <option  value="0" selected>Não</option>
+      </select>
+  
+
+      <div id="decididoCheck" style="display:none;">
+        <h4>
+              Vestibulares que prestará (Separar por barra):
+        </h4>
+        <h5>
+          <i>
+              Exemplo:Enem/Fuvest/Unesp
+          </i>
+        </h5>
+
+        <input type="text" class="form-control input-lg" id="vestibulares"  name="vestibulares"> </input> 
+        </br>
+
+      </div>
+
+      <h4>Série escolar</h4>
+           
+      <select name="serie">
+      <option value="Fundamental" selected>Ensino Fundamental</option>
+      <option value="1ou2">1º ou 2º ano do Ensino Médio</option>
+      <option value="3">3º ano do Ensino Médio</option>
+      <option value="Concluido">Já concluí ensino médio</option>
+      </select>
+
+      </br></br>
+
+
+
+      <!-- Facilidades  -->
+      <h4>
+            Matérias em que apresenta facilidade:
+      </h4>
+           
+      <div class="row">  
+        <div class="col-md-4">              
+          <input type="checkbox" id="dificuldade_mat" name="dificuldade_mat">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Matemática
+          </span>
+        </div>
+
+        <div class="col-md-4">              
+          <input type="checkbox" id="dificuldade_fis" name="dificuldade_fis">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Física
+          </span>
+        </div>
+        
+        <div class="col-md-4">              
+          <input type="checkbox" id="dificuldade_quim" name="dificuldade_quim">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Química
+          </span>
+        </div>
+
+      </div>  
+
+      <div class="row">  
+        <div class="col-md-4">              
+          <input type="checkbox" iid="dificuldade_hist" name="dificuldade_hist">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            História
+          </span>
+        </div>
+
+        <div class="col-md-4">              
+          <input type="checkbox" id="dificuldade_geo" name="dificuldade_geo">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Geografia
+          </span>
+        </div>
+        
+        <div class="col-md-4">              
+          <input type="checkbox" id="dificuldade_bio" name="dificuldade_bio">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Biologia
+          </span>
+        </div>
+
+      </div>  
+
+      <div class="row">  
+        <div class="col-md-4">              
+          <input type="checkbox" id="dificuldade_port" name="dificuldade_port">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Português
+          </span>
+        </div>
+
+        <div class="col-md-4">              
+          <input type="checkbox" id="dificuldade_red" name="dificuldade_red">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Redação
+          </span>
+        </div>
+
+        <div class="col-md-4">              
+          <input type="checkbox" id="dificuldade_filo" name="dificuldade_filo">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Filosofia
+          </span>
+        </div>     
+      </div>  
+
+      <div class="row">  
+        <div class="col-md-4">              
+          <input type="checkbox" id="dificuldade_socio" name="dificuldade_socio">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Sociologia
+          </span>
+        </div>     
+      </div>  
+
+      </br>
+      <!--- Matérias com dificuldade -->
+      <h4>
+            Matérias em que apresenta dificuldade:
+      </h4>
+           
+         <div class="row">  
+        <div class="col-md-4">              
+          <input type="checkbox" id="facilidade_mat" name="facilidade_mat">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Matemática
+          </span>
+        </div>
+
+        <div class="col-md-4">              
+          <input type="checkbox" id="facilidade_fis" name="facilidade_fis">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Física
+          </span>
+        </div>
+        
+        <div class="col-md-4">              
+          <input type="checkbox" id="facilidade_quim" name="facilidade_quim">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Química
+          </span>
+        </div>
+
+      </div>  
+
+      <div class="row">  
+        <div class="col-md-4">              
+          <input type="checkbox" iid="facilidade_hist" name="facilidade_hist">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            História
+          </span>
+        </div>
+
+        <div class="col-md-4">              
+          <input type="checkbox" id="facilidade_geo" name="facilidade_geo">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Geografia
+          </span>
+        </div>
+        
+        <div class="col-md-4">              
+          <input type="checkbox" id="facilidade_bio" name="facilidade_bio">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Biologia
+          </span>
+        </div>
+
+      </div>  
+
+      <div class="row">  
+        <div class="col-md-4">              
+          <input type="checkbox" id="facilidade_port" name="facilidade_port">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Português
+          </span>
+        </div>
+
+        <div class="col-md-4">              
+          <input type="checkbox" id="facilidade_red" name="facilidade_red">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Redação
+          </span>
+        </div>
+
+        <div class="col-md-4">              
+          <input type="checkbox" id="facilidade_filo" name="facilidade_filo">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Filosofia
+          </span>
+        </div>     
+      </div>  
+
+      <div class="row">  
+        <div class="col-md-4">              
+          <input type="checkbox" id="facilidade_socio" name="facilidade_socio">  <!-- inicialmente unchecked -->
+          <span style="font-size:18px;">
+            Sociologia
+          </span>
+        </div>     
+      </div>  
+
+      <!---  FIM DO  DADOS-->
 
       <hr class="colorgraph">
       <div class="row">  <!-- INICIA O ROW -->
         
 
-        <div class="col-xs-2 col-md-2"></div>
-        <div class="col-xs-8 col-md-8"><input type="submit" value="Registrar" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+      <div class="col-xs-2 col-md-2"></div>
+      <div class="col-xs-8 col-md-8"><input type="submit" value="Registrar" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
         
 
         <!--  Botão  de sign in
@@ -120,12 +309,6 @@ Bootstrap base: http://bootsnipp.com/snippets/featured/mix-amp-match-register
 
 
       </div> <!-- FECHA O ROW -->
-
-   
-
-
-
-
 
 
     </form>
