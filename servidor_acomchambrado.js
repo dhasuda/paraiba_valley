@@ -171,16 +171,19 @@ function logIn(req, res) {
 	Aluno.count({email: user, password: pass}, function( err, count){
     	
     	if (count > 0) {
-    		var endereco = './tinder.html?';
+    		var endereco = './tinder.html/';
+    		// username=berna&first_name=Bernardo&universidade=UFRJ
     		Mentor.find(function(err, mentores) {
 				if (err) return console.error(err);
-				if(mentores != null) {
-					console.log('oi');
-					var posicao = Math.floor((Math.random() * mentores.length));
-					endereco = endereco+'usuario='+ mentores[posicao].usuario+'&first_name='+mentores[posicao].first_name+'&last_name='+mentores[posicao].last_name+'&graduacao='+mentores[posicao].graduacao;
-		 			endereco = endereco + '&universidade='+mentores[posicao].universidade+'&conclusao='+mentores[posicao].conclusao+"&!!!=";
-		 			res.writeHead(200, {"Cotent-Type": "text/html"});
-					fs.createReadStream(endereco).pipe(res);
+				var posicao = Math.floor((Math.random() * mentores.length));
+				res.json(mentores[posicao]);
+				// if(mentores != null) {
+				// 	console.log('oi');
+				// 	var posicao = Math.floor((Math.random() * mentores.length));
+				// 	endereco = endereco+ mentores[posicao].usuario+'/'+mentores[posicao].first_name;
+		 	// 		endereco = endereco + '/'+mentores[posicao].universidade;
+		 	// 		res.writeHead(200, {"Cotent-Type": "text/html"});
+				// 	fs.createReadStream(endereco).pipe(res);
 				}
 				else {
 					res.writeHead(200, {"Cotent-Type": "text/html"});
