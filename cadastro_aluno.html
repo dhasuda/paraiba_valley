@@ -85,42 +85,47 @@ Bootstrap base: http://bootsnipp.com/snippets/featured/mix-amp-match-register
       
       </br>
 
-     
+     </br>
      
       <i><h4>Escolher seu rumo profissional pode ser uma decisão muito difícil. Aqui na Paraíba Valley, nosso objetivo é ajudar tanto aqueles que já sabem o que querem quanto os que ainda estão em dúvida</h4></i>
-      <select id="verDecidido" onchange="decididoCheck(this);">
-      <option id="TahDecidido" value="1">Sim</option>
-      <option  value="0" selected>Não</option>
+      <select name = "decidido" id="decidido" onchange="checar(this, 'FLAG_decidido', 'IF_decidido');">
+        <option id="FLAG_decidido" value="1">Sim</option>
+        <option value="0" selected>Não</option>
       </select>
+
+      </br>
   
 
-      <div id="decididoCheck" style="display:none;">
+      <div id="IF_decidido" style="display:none;">
         <h4>
-              Vestibulares que prestará (Separar por barra):
+          Curso pretendido:
+        </h4>
+        <input type="text" name="curso" id="curso" class="form-control input-lg"  tabindex="3">
+      </div>
+
+      <h4>Série escolar</h4>
+           
+      <select id="serie" name="serie" onchange="checar(this, 'FLAG_serie', 'IF_serie');">
+        <option value="Fundamental" selected>Ensino Fundamental</option>
+        <option value="1ou2">1º ou 2º ano do Ensino Médio</option>
+        <option value="3" id="FLAG_serie">3º ano do Ensino Médio ou formado</option>        
+      </select>
+
+      </br>
+
+      <div id="IF_serie" style="display:none;">
+        <h4>
+          Vestibulares que prestará (Separar por barra):
         </h4>
         <h5>
           <i>
-              Exemplo:Enem/Fuvest/Unesp
+            Exemplo:Enem/Fuvest/Unesp
           </i>
         </h5>
 
         <input type="text" class="form-control input-lg" id="vestibulares"  name="vestibulares"> </input> 
         </br>
-
-      </div>
-
-      <h4>Série escolar</h4>
-           
-      <select name="serie">
-      <option value="Fundamental" selected>Ensino Fundamental</option>
-      <option value="1ou2">1º ou 2º ano do Ensino Médio</option>
-      <option value="3">3º ano do Ensino Médio</option>
-      <option value="Concluido">Já concluí ensino médio</option>
-      </select>
-
-      </br></br>
-
-
+      </div> 
 
       <!-- Facilidades  -->
       <h4>

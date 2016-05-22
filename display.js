@@ -1,15 +1,15 @@
-function decididoCheck(nameSelect)
+function checar(nameSelect, flag, if_selected)
 {
     if(nameSelect){
-        admOptionValue = document.getElementById("TahDecidido").value;
-        if(admOptionValue == nameSelect.value){
-            document.getElementById("decididoCheck").style.display = "block";
+        var opcao = document.getElementById(flag).value;
+        if(opcao == nameSelect.value){
+            document.getElementById(if_selected).style.display = "block";
         }
         else{
-            document.getElementById("decididoCheck").style.display = "none";
+            document.getElementById(if_selected).style.display = "none";
         }
     }
     else{
-        document.getElementById("decididoCheck").style.display = "none";
+        document.getElementById(if_selected).style.display = "none";
     }
 }
