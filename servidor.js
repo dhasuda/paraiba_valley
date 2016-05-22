@@ -32,7 +32,8 @@ var alunoSchema = new mongoose.Schema({
 	// 1: tem dificuldade; 0: nao tem dificuldade
 	// Ordem das materias: mat, fis, quim, bio, hist, geo, port, red, filo, socio
 	facilidades: Array,
-	serie: String 
+	serie: String, 
+	mentores: Array
 });
 var Aluno = mongoose.model('Aluno', alunoSchema);
 
@@ -50,6 +51,49 @@ var mentorSchema = new mongoose.Schema ({
 var Mentor = mongoose.model('Mentor', mentorSchema);
 
 // Servidor --------------------------------------------------------
+
+function definirMentor(user) {
+	Aluno.findOne({email: email}, function(err, alunos) {
+		if (err) return console.error(err);
+		var decid = alunos[0].decidido;
+		var cur = alunos[0].curso;
+		var ves = alunos[0].vestibulares;
+		var ser = alunos[0].serie;
+		var ments = alunos[0].mentores;
+		if(dec == 'true') {
+			Mentor.find({graduacao: cur}, function(err, mentores) {
+				var i = 0;
+				while(i < mentores.length) {
+					if (ments.indexOf(mentores[i].email == -1)) {
+						return mentores[i].email;
+					}
+					i = i + 1;
+				}
+			})
+		}
+		else if (ves != []){
+			for (var i = 0; i < ves.lenght; i++) {
+				Mentor.find({universidade: ves[i]}, function(err, mentores) {
+					for (var j = 0; j < mentores.length; j++) {
+						if (ments.indexOf(mentores[j].email) == -1) {
+							return mentores[j].email;
+						}
+					}
+				})
+			}
+		}
+		else {
+			Mentor.find(function(err, mentores) {
+				for (var i = 0; i < mentores.length; i++) {
+					if(ments.indexOf(mentores[j].email == -1)) {
+						return mentores[i].email;
+					}
+				}
+			})
+		}
+		return 'nada';
+	})
+}
 
 // Cadastro
 function onToInt(str) {
@@ -168,8 +212,25 @@ function logIn(req, res) {
 	Aluno.count({email: user, password: pass}, function( err, count){
     	
     	if (count > 0) {
+    		var endereco = './tinder.html?';
+    		var match = definirMentor(user);
+
+			Mentor.findOne({email: match}, function(err, mentores) {
+				if (err) return console.error(err);
+				endereco = endereco+'usuario="'+mentores[0].usuario+'"&first_name="'+mentores[0].first_name+'"&last_name="'+mentores[0].last_name+'"&graduacao="'+mentores[0].graduacao;
+				endereco = endereco + '"&universidade="'+mentores[0].universidade+'"&conclusao="'+mentores[0].conclusao+'"';
+				for (var i = 0; i < 10; i++) {
+					if(mentores[0].facilidades[i] == 1) {
+						endereco = endereco + '&facilidade' + i + '="true"';
+					}
+				}
+
+				res.writeHead(200, {"Cotent-Type": "text/html"});
+				fs.createReadStream(endereco).pipe(res);
+			})
+
     		res.writeHead(200, {"Cotent-Type": "text/html"});
-			fs.createReadStream("./cadastro_professor.html").pipe(res);
+			fs.createReadStream("./tinder.html").pipe(res);
     	}
     	else {
     		Mentor.count({email: user, password: pass}, function( err, count){
@@ -194,11 +255,10 @@ app.post('/mentor', submitMent);
 
 app.post('/login', logIn);
 
-app.get('/', function(req, res){
+app.get('/c', function(req, res){
 	res.writeHead(200, {"Cotent-Type": "text/html"});
 	fs.createReadStream("./aluno_ou_professor.html").pipe(res);
 });
-
 
 app.get('/aluno_ou_professor.html', function(req, res){
 	res.writeHead(200, {"Cotent-Type": "text/html"});
