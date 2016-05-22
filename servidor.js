@@ -24,24 +24,34 @@ var alunoSchema = new mongoose.Schema({
 });
 var Aluno = mongoose.model('Aluno', alunoSchema);
 
-var joao = new Aluno({
+var novoAluno = new Aluno({
 	nome: 'davi'
 });
 
-// joao.save(function(err, joao) {
-// 	if (err) return console.error(err);
-// });
+novoAluno.save(function(err, novoAluno) {
+	if (err) return console.error(err);
+});
 
-// Aluno.find(function(err, alunos) {
-// 	if (err) return console.error(err);
-// 	console.log(alunos);
-// })
+// Aluno.remove(function (err) {
+//   if (err) return handleError(err);
+  // removed!
+//});
+
+Aluno.find(function(err, alunos) {
+	if (err) return console.error(err);
+	console.log(alunos);
+})
+
+Aluno.count({}, function( err, count){
+    console.log( "Number of users:", count );
+})
 
 // Mentor
 var mentorSchema = new mongoose.Schema({
 	nome: String
 });
 var Mentor = mongoose.model('Mentor', mentorSchema);
+
 
 
 // Servidor --------------------------------------------------------
