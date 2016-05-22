@@ -52,66 +52,7 @@ var Mentor = mongoose.model('Mentor', mentorSchema);
 
 // Servidor --------------------------------------------------------
 
-function definirMentor(user, callback) {
-	Aluno.findOne({email: user}, function(err, alunos) {
-		if (err) return console.error(err);
-		var decid = alunos.decidido;
-		var cur = alunos.curso;
-		var ves = alunos.vestibulares;
-		var ser = alunos.serie;
-		var ments = alunos.mentores;
-		if(decid == 'true') {
-			console.log('a');
-			Mentor.find({graduacao: cur}, function(err, mentores) {
-				if(mentores != null) {
-					var i = 0;
-					while(i < mentores.length) {
-						if (ments.indexOf(mentores[i].email == -1)) {
-							callback(mentores[i].email);
-							return mentores[i].email;
-						}
-						i = i + 1;
-					}
-				}
-				callback('nada');
-				return 'nada';
 
-			})
-		}
-		else if (ves != []){
-			console.log('b');
-			for (var i = 0; i < ves.lenght; i++) {
-				Mentor.find({universidade: ves[i]}, function(err, mentores) {
-					if (mentores != null) {
-						for (var j = 0; j < mentores.length; j++) {
-							if (ments.indexOf(mentores[j].email) == -1) {
-								callback(mentores[j].email);
-								return mentores[j].email;
-							}
-						}
-					}
-					callback('nada');
-					return 'nada';
-				})
-			}
-		}
-		else {
-			console.log('=c');
-			Mentor.find(function(err, mentores) {
-				if (mentores != null) {
-					for (var i = 0; i < mentores.length; i++) {
-						if(ments.indexOf(mentores[j].email == -1)) {
-							callback(mentores[i].email);
-							return mentores[i].email;
-						}
-					}
-				}
-				callback('nada');
-				return 'nada';
-			})
-		}
-	})
-}
 
 // Cadastro
 function onToInt(str) {
@@ -221,31 +162,6 @@ function submitMent(req, res) {
 	}
 }
 
-function confirmandoMentor(match){
-	console.log(match);
-	if (match != 'nada'){
-		Mentor.findOne({email: match}, function(err, mentores) {
-			if (err) return console.error(err);
-			if(mentores != null) {
-				endereco = endereco+'usuario="'+ mentores.usuario+'"&first_name="'+mentores.first_name+'"&last_name="'+mentores.last_name+'"&graduacao="'+mentores.graduacao;
-				endereco = endereco + '"&universidade="'+mentores.universidade+'"&conclusao="'+mentores.conclusao+'"';
-				for (var i = 0; i < 10; i++) {
-					if(mentores[0].facilidades[i] == 1) {
-						endereco = endereco + '&facilidade' + i + '="true"';
-					}
-				}
-
-				res.writeHead(200, {"Cotent-Type": "text/html"});
-				fs.createReadStream(endereco).pipe(res);
-			}
-		})
-	}
-	else {
-		res.writeHead(200, {"Cotent-Type": "text/html"});
-		fs.createReadStream("./tinder.html?nada").pipe(res);
-	}
-}
-
 // Login
 function logIn(req, res) {
 	var user = req.body.login_email;
@@ -256,30 +172,21 @@ function logIn(req, res) {
     	
     	if (count > 0) {
     		var endereco = './tinder.html?';
-    		var match = definirMentor(user, confirmandoMentor);
-    		//console.log(match);
-   //     		if (match != 'nada'){
-			// 	Mentor.findOne({email: match}, function(err, mentores) {
-			// 		if (err) return console.error(err);
-			// 		if(mentores != null) {
-			// 			endereco = endereco+'usuario="'+ mentores.usuario+'"&first_name="'+mentores.first_name+'"&last_name="'+mentores.last_name+'"&graduacao="'+mentores.graduacao;
-			// 			endereco = endereco + '"&universidade="'+mentores.universidade+'"&conclusao="'+mentores.conclusao+'"';
-			// 			for (var i = 0; i < 10; i++) {
-			// 				if(mentores[0].facilidades[i] == 1) {
-			// 					endereco = endereco + '&facilidade' + i + '="true"';
-			// 				}
-			// 			}
-
-			// 			res.writeHead(200, {"Cotent-Type": "text/html"});
-			// 			fs.createReadStream(endereco).pipe(res);
-			// 		}
-			// 	})
-			// }
-			// else {
-			// 	res.writeHead(200, {"Cotent-Type": "text/html"});
-			// 	fs.createReadStream("./tinder.html?nada").pipe(res);
-			// }
-    		
+    		Mentor.find(function(err, mentores) {
+				if (err) return console.error(err);
+				if(mentores != null) {
+					console.log('oi');
+					var posicao = Math.floor((Math.random() * mentores.length));
+					endereco = endereco+'usuario='+ mentores[posicao].usuario+'&first_name='+mentores[posicao].first_name+'&last_name='+mentores[posicao].last_name+'&graduacao='+mentores[posicao].graduacao;
+		 			endereco = endereco + '&universidade='+mentores[posicao].universidade+'&conclusao='+mentores[posicao].conclusao+"&!!!=";
+		 			res.writeHead(200, {"Cotent-Type": "text/html"});
+					fs.createReadStream(endereco).pipe(res);
+				}
+				else {
+					res.writeHead(200, {"Cotent-Type": "text/html"});
+					fs.createReadStream("./tinder.html?nada").pipe(res);
+				}
+			})
     	}
     	else {
 
