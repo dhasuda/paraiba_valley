@@ -1,12 +1,19 @@
-var app = require('express')();
+var express = require('express')
+var app = express();
+//var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 var name;
+var other;
+var users = {};
 
-app.get('/chat/:name', function(req, res){
+app.use(express.static(__dirname));
+
+app.get('/chat/:name/:other', function(req, res){
     //console.log(req.params.name + ' entrou');
     name = req.params.name;
+    other = req.params.other;
     res.sendFile(__dirname + '/chat.html');
 });
 
@@ -14,19 +21,26 @@ app.get('/chat/:name', function(req, res){
 io.on('connection', function(socket){
 
     socket.name = name;
-
+    socket.other = other;
+    users[socket.name] = socket;
     //console.log(socket.name + ' logou');
 
-    io.emit('enter chat', socket.name);
+    //io.emit('enter chat', socket.name);
+    users[socket.name].emit('enter chat', socket.name);
+    if (users.hasOwnProperty(socket.other))
+        users[socket.other].emit('enter chat', socket.name);
 
     socket.on('send message', function(msg){
-        io.emit('show message', {name: socket.name, text: msg});
+        //io.emit('show message', {name: socket.name, text: msg});
+        users[socket.name].emit('show message', {name: socket.name, text: msg});
+        if (users.hasOwnProperty(socket.other))
+            users[socket.other].emit('show message', {name: socket.name, text: msg});
     });
 
-    /*socket.on('enter chat', function(name){
-        socket.name = name;
-        console.log('ta no socket');
-    })*/
+    socket.on('disconnect', function(){
+        io.emit('disconnect message', socket.name);
+        delete users[socket.name];
+    })
 });
 
 

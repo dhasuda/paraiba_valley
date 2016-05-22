@@ -10,16 +10,23 @@
                 box-sizing: border-box;
             }
 
+            html, body{
+                height: 100%;
+            }
+
             #content {
                 padding: 10px;
-                margin: -10px auto 10px auto;
+                margin: 10px auto 10px auto;
                 width: 80%;
-                background-color: rgba(100,100,100,0.5);
+                max-height: 65%;
+                overflow-y: scroll;
+                background-color: rgba(149,35,40,0.6);
                 box-shadow: 0px 0px 5px black;
             }
 
             #content h1 {
                 text-align: center;
+                color: black;
             }
 
             #messages {
@@ -30,22 +37,36 @@
 
             #messages li {
                 padding: 5px 10px;
+                font-family: sans-serif;
             }
 
             #messages li:nth-child(odd){
                 background-color: #eee;
             }
 
+            #messages li:nth-child(even){
+                background-color: #ffffff;
+            }
+
             #sendMsg {
                 background: #0000;
                 padding: 3px;
                 position: fixed;
-                bottom: 0;
+                bottom: 50px;
                 width: 400px;
             }
 
             button {
                 margin: 5px;
+            }
+
+            #logo {
+                display: block;
+                margin-top: 10px;
+                margin-left: auto;
+                margin-right: auto;
+                height: 150px;
+                width: auto;
             }
 
         </style>
@@ -56,9 +77,11 @@
         <!-- Latest compiled JavaScript -->
         <script     src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <meta charset="utf-8">
-        <title>Chat</title>
+        <title>Chat | Quero Dicas</title>
+        <link rel="icon" href="/icon.png">
     </head>
     <body>
+        <img id="logo" src="/logo.png"/>
         <div id='content'>
             <h1>Converse e tire suas dúvidas!</h1>
             <div id="chat">
@@ -88,6 +111,10 @@
 
             socket.on('enter chat', function(name){
                 $('#messages').append('<li style="font-weight: bold">' + name + ' entrou na conversa</li>');
+            });
+
+            socket.on('disconnect message', function(name){
+                $('#messages').append('<li style="font-weight: bold">' + name + ' saiu da conversa</li>');
             });
 
         </script>
