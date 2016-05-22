@@ -166,31 +166,26 @@ function logIn(req, res) {
 	console.log(user);
 	var existe = 0; // 1: aluno, 2: mentor, 0: nao existe
 	Aluno.count({email: user, password: pass}, function( err, count){
+    	
     	if (count > 0) {
-    		existe = 1;
+    		res.writeHead(200, {"Cotent-Type": "text/html"});
+			fs.createReadStream("./cadastro_professor.html").pipe(res);
     	}
+    	else {
+    		Mentor.count({email: user, password: pass}, function( err, count){
+    			if (count > 0) {
+    				existe = 2;
+    				res.writeHead(200, {"Cotent-Type": "text/html"});
+					fs.createReadStream("./cadastro_professor.html").pipe(res);
+    			}
+    			else {
+    				// Login nao existe
+					res.writeHead(200, {"Cotent-Type": "text/html"});
+					fs.createReadStream("./senha_incorreta.html").pipe(res);
+    			}
+    		})
+    	}	
 	})
-
-	Mentor.count({email: user, password: pass}, function( err, count){
-    	if (count > 0) {
-    		existe = 2;
-    	}
-	})
-
-	if (existe == 1) {
-		// Login de aluno
-		res.writeHead(200, {"Cotent-Type": "text/plain"});
-		res.write('Deu certo!');
-		res.end();
-	}
-	else if (existe == 2) {
-		// Login de mentor
-	}
-	else {
-		// Login nao existe
-		res.writeHead(200, {"Cotent-Type": "text/html"});
-		fs.createReadStream("./senha_incorreta.html").pipe(res);
-	}
 }
 
 app.post('/aluno', submitAl);
