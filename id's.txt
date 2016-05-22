@@ -1,0 +1,16 @@
+ID's=Name's e suas descrições
+
+
+tipo = aluno ou professor
+
+
+usuario
+email
+password
+password_confirmation
+first_name
+last_name
+decidido      valor = true ou false 
+vestibulares   vestibulares que ele prestará
+dificuldade_?   ? = {mat, fis, quim, bio, hist, geo, filo, socio}
+facilidade_?   ? = {mat, fis, quim, bio, hist, geo, filo, socio}
