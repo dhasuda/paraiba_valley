@@ -184,11 +184,13 @@ function logIn(req, res) {
 		 	// 		endereco = endereco + '/'+mentores[posicao].universidade;
 		 	// 		res.writeHead(200, {"Cotent-Type": "text/html"});
 				// 	fs.createReadStream(endereco).pipe(res);
+				res.writeHead(200, {"Cotent-Type": "text/html"});
+				fs.createReadStream("./tinder.html?nada").pipe(res);
 				}
-				else {
-					res.writeHead(200, {"Cotent-Type": "text/html"});
-					fs.createReadStream("./tinder.html?nada").pipe(res);
-				}
+				// else {
+				// 	res.writeHead(200, {"Cotent-Type": "text/html"});
+				// 	fs.createReadStream("./tinder.html?nada").pipe(res);
+				// }
 			})
     	}
     	else {
