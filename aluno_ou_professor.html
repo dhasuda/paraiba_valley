@@ -39,13 +39,14 @@ Bootstrap base: http://bootsnipp.com/snippets/featured/mix-amp-match-register
             <div class="col-md-5 vcenter">
               <h3 class="form-signin-heading">Junte-se a nós, registre-se aqui!</h3>    
               <hr class="colorgraph"><br>
+              <div style = "font-size:15px; color:red">Usuário ou senha incorretos</div>
              </div> 
                   
           </div>
 
           <div class="row">
               <div class="col-md-5 col-md-offset-1 vcenter">
-                  <form action="" method="post" name="Login_Form" class="form-signin" id="logar">       <!-- form do login -->         
+                  <form action="/login" method="post" name="login" class="form-signin" id="login">       <!-- form do login -->         
                     <input type="text" class="form-control" name="login_email" placeholder="E-mail" required="" autofocus="" />
                     </br>
                     <input type="password" class="form-control" name="login_password" placeholder="Senha" required=""/>          
