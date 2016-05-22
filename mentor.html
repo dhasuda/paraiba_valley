@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Novos mentores| Quero Dicas</title>
+		<!-- Latest compiled and minified CSS -->
+	    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	    <!-- jQuery library -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	    <!-- Latest compiled JavaScript -->
+	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	    <meta charset="utf-8">
+	</head>
+
+	<body>
+
+
+		<img src="logo.png" style="margin-left:800px; margin-top:20px" width="250px">
+		<div class="container-fluid">
+			<div class="row" style="margin-top:50px">
+				<div class="col-md-4">
+
+
+					<script>
+
+												    var parameters = location.search.substring(1).split("&");
+												    var usuario = Array()
+												    var nome=Array()
+												    for (var i = 0; i < parameters.length; i++)
+												    {
+												    	var aux=parameters[i].split('=')
+
+												    	usuario.push(aux[0])
+												    	nome.push(aux[1])
+												   	}
+												   	var flag = false
+												   	for (var i = 0; i < parameters.length; i++)
+												    {
+														if(usuario[i]=='!!!')
+												    		break
+
+												   	}
+						document.write('<h2>Olá, ' + meuApelido + '!</h2>');
+					</script>
+					<table style ="margin-left:15px">
+
+							<script type="text/javascript">
+
+							    var parameters = location.search.substring(1).split("&");
+							    var usuario = Array()
+							    var nome=Array()
+							    for (var i = 0; i < parameters.length; i++)
+							    {
+							    	var aux=parameters[i].split('=')
+
+							    	usuario.push(aux[0])
+							    	nome.push(aux[1])
+							   	}
+							   	var flag = false
+							   	for (var i = 0; i < parameters.length; i++)
+							    {
+									if(usuario[i]=='!!!')
+							    		break
+							    		document.write("<tr><td style='font-size:16px'><a href=localHost:3000\\"+nome[i]+">"+usuario[i]+"("+nome[i]+")"+"</a></td></tr>")
+
+							   	}
+
+
+
+
+							</script>
+
+					</table>
+
+
+				</div>
+
+
+
+
+			</div>
+		</div>
+
+
+	</body>
+
+</html>
