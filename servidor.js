@@ -26,6 +26,7 @@ var alunoSchema = new mongoose.Schema({
 	first_name: String,
 	last_name: String,
 	decidido: String,
+	curso: String,
 	vestibulares: Array, // Nao esquecer de dar split()
 	dificuldades: Array, // Cada elemento do array corresponde a uma materia
 	// 1: tem dificuldade; 0: nao tem dificuldade
@@ -36,14 +37,22 @@ var alunoSchema = new mongoose.Schema({
 var Aluno = mongoose.model('Aluno', alunoSchema);
 
 var mentorSchema = new mongoose.Schema ({
-
+	usuario: String,
+	email: String,
+	password: String,
+	first_name: String,
+	last_name: String,
+	graduacao: String,
+	universidade: String,
+	conclusao: String,
+	facilidades: Array
 });
 var Mentor = mongoose.model('Mentor', mentorSchema);
 
 // Servidor --------------------------------------------------------
 
 // Cadastro
-function onToInt(var str) {
+function onToInt(str) {
 	if (str == 'on') return 1;
 	return 0;
 }
@@ -81,7 +90,8 @@ function submitAl(req, res) {
 			first_name: req.body.first_name,
 			last_name: req.body.last_name,
 			decidido: req.body.decidido,
-			vestibulares: req.body.vestiulares.split("/");
+			curso: req.body.curso,
+			//vestibulares: req.body.vestiulares.split("/"),
 			dificuldades: dif,
 			facilidades: fac,
 			serie: req.body.serie
@@ -91,7 +101,11 @@ function submitAl(req, res) {
 			if (err) return console.error(err);
 		});
 
-		res.writeHed(200, {"Cotent-Type": "text/html"});
+		res.writeHead(200, {"Cotent-Type": "text/html"});
+		// Aluno.find(function(err, alunos) {
+		// 	if (err) return console.error(err);
+		// 	console.log(alunos);
+		// })
 		fs.createReadStream("./sucesso.html").pipe(res);
 	}
 	else {
@@ -107,15 +121,37 @@ function submitAl(req, res) {
 
 function submitMent(req, res) {
 	if (req.body.password == req.body.password_confirmation){
+		var fac = [];
+
+		fac.push(onToInt(req.body.facilidade_mat));
+		fac.push(onToInt(req.body.facilidade_fis));
+		fac.push(onToInt(req.body.facilidade_quim));
+		fac.push(onToInt(req.body.facilidade_bio));
+		fac.push(onToInt(req.body.facilidade_hist));
+		fac.push(onToInt(req.body.facilidade_geo));
+		fac.push(onToInt(req.body.facilidade_port));
+		fac.push(onToInt(req.body.facilidade_red));
+		fac.push(onToInt(req.body.facilidade_filo));
+		fac.push(onToInt(req.body.facilidade_socio));
+
 		var novoMentor = new Mentor({
-			
+			usuario: req.body.usuario,
+			email: req.body.email,
+			password: req.body.password,
+			first_name: req.body.first_name,
+			last_name: req.body.last_name,
+			graduacao: req.body.graduacao,
+			universidade: req.body.universidade,
+			conclusao: req.body.conclusao,
+			//vestibulares: req.body.vestiulares.split("/"),
+			facilidades: fac
 		});
 
 		novoMentor.save(function(err, novoMentor) {
 			if (err) return console.error(err);
 		});
 
-		res.writeHed(200, {"Cotent-Type": "text/html"});
+		res.writeHead(200, {"Cotent-Type": "text/html"});
 		fs.createReadStream("./sucesso.html").pipe(res);
 	}
 	else {
@@ -123,22 +159,19 @@ function submitMent(req, res) {
 	}
 }
 
-app.post('/submitAluno', submitAl);
-app.post('/submitMentor', submitMent);
-
-
 // Login
 function logIn(req, res) {
 	var user = req.body.login_email;
 	var pass = req.body.login_password;
+	console.log(user);
 	var existe = 0; // 1: aluno, 2: mentor, 0: nao existe
-	Aluno.count({}, function( err, count){
+	Aluno.count({email: user, password: pass}, function( err, count){
     	if (count > 0) {
     		existe = 1;
     	}
 	})
 
-	Mentor.count({}, function( err, count){
+	Mentor.count({email: user, password: pass}, function( err, count){
     	if (count > 0) {
     		existe = 2;
     	}
@@ -146,21 +179,69 @@ function logIn(req, res) {
 
 	if (existe == 1) {
 		// Login de aluno
+		res.writeHead(200, {"Cotent-Type": "text/plain"});
+		res.write('Deu certo!');
+		res.end();
 	}
 	else if (existe == 2) {
 		// Login de mentor
 	}
 	else {
 		// Login nao existe
+		res.writeHead(200, {"Cotent-Type": "text/html"});
+		fs.createReadStream("./senha_incorreta.html").pipe(res);
 	}
 }
-app.post('/login', logIn)
+
+app.post('/aluno', submitAl);
+
+app.post('/mentor', submitMent);
+
+app.post('/login', logIn);
 
 app.get('/', function(req, res){
 	res.writeHead(200, {"Cotent-Type": "text/html"});
-	fs.createReadStream("./index.html").pipe(res);
+	fs.createReadStream("./aluno_ou_professor.html").pipe(res);
 });
+
+
+app.get('/aluno_ou_professor.html', function(req, res){
+	res.writeHead(200, {"Cotent-Type": "text/html"});
+	fs.createReadStream("./aluno_ou_professor.html").pipe(res);
+});
+
+app.get('/cadastro_aluno.html', function(req, res) {
+	res.writeHead(200, {"Cotent-Type": "text/html"});
+	fs.createReadStream("./cadastro_aluno.html").pipe(res);
+});
+
+app.get('/cadastro_professor.html', function(req, res) {
+	res.writeHead(200, {"Cotent-Type": "text/html"});
+	fs.createReadStream("./cadastro_professor.html").pipe(res);
+});
+
+
+// Remove tudo do banco de dados ***********************************************************
+// Aluno.remove(function (err) {
+//   if (err) return handleError(err);
+//   // removed!
+// });
+
+// Mentor.remove(function (err) {
+//   if (err) return handleError(err);
+//   // removed!
+// });
+// Aluno.find(function(err, alunos) {
+// 	if (err) return console.error(err);
+// 	console.log(alunos);
+// })
+// Mentor.find(function(err, mentores) {
+// 	if (err) return console.error(err);
+// 	console.log(mentores);
+// }) // ************************************************************************************
+
 
 app.listen(8080, function() {
 	console.log('app listening port 8080');
 });
+
