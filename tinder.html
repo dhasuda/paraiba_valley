@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<title>Novos mentores| Quero Dicas</title>
 		<!-- Latest compiled and minified CSS -->
 	    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	    <!-- jQuery library -->
@@ -11,36 +12,46 @@
 	</head>
 
 	<body>
-<!-- 		      <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
-      
-		    <div class="carousel-inner">
-		        <div class="row" style="margin-top:100px">
-			        <div class="col-md-offset-4 col-md-4">
-			        	<div class="item active">
-			        		
-			        		<div class="well well-lg"> 
-					           	<div class="carousel-caption" >
-					           		<p>Insert your text here !</p>
-					           	</br>
-					           	</div>
-				           </div> 
-			           </div>
-			        </div>
-		    	</div>
-		    </div>
-		</div> -->
+
 		<img src="logo.png" style="margin-left:800px; margin-top:20px" width="250px">
 		<div class="container-fluid">
 			<div class="row" style="margin-top:50px">
 				<div class="col-md-4">
-					<tr>
-						<div style="font-size:18px; font-family:Verdana; margin-left:15px">Tinder</div>
-					</tr>
-					</br>
-					<tr>
-						<div style="font-size:18px; font-family:Verdana; margin-left:15px">Chat</div>
-					</tr>
+
+
+					<button type="button" class="btn btn-default" style="margin-left:15px; font-size:18px">Conheça novos mentores</button> </br></br>
+					<button type="button" class="btn btn-primary" style="margin-left:15px; font-size:18px">Converse com seus mentores</button> </br></br>
+					<table style ="margin-left:15px">
+						
+							<script type="text/javascript">
+								
+							    var parameters = location.search.substring(1).split("&");
+							    var usuario = Array()
+							    var nome=Array()
+							    for (var i = 0; i < parameters.length; i++) 
+							    {
+							    	var aux=parameters[i].split('=')
+
+							    	usuario.push(aux[0])
+							    	nome.push(aux[1])
+							   	}
+							   	var flag = false
+							   	for (var i = 0; i < parameters.length; i++) 
+							    {
+							    	if(flag)
+							    		document.write("<tr><td style='font-size:16px'><a href=localHost:3000\\"+nome[i]+">"+usuario[i]+"("+nome[i]+")"+"</a></td></tr>")
+							    	if(usuario[i]=='!!!')
+							    		flag = true						    	
+							   	}
+							   	
+
+
+
+							</script>
+						
+					</table>
+					
 					
 				</div>
 
@@ -104,10 +115,10 @@
 						   	var flag = false
 						   	for (var i = 0; i < parameters.length; i++) 
 						    {
-						    	var aux=parameters[i].split('=')
-
+						    	if(names[i]=='!!!')
+						    		break
 						    	if(flag)
-						    		document.write("div style='font-size:20px; text-align:center; margin-top:5px'>	"+hash(names[i])+"</div>")
+						    		document.write("<div style='font-size:20px; text-align:center; margin-top:5px'>	"+hash(names[i])+"</div>")
 						    	else
 						    		document.write("<div style='font-size:20px; text-align:center; margin-top:5px'>"+hash(names[i])+": "+values[i]+"</div>")
 						    	if(names[i]=='conclusao'){
@@ -115,8 +126,7 @@
 						    		flag=true
 						    	}
 						   	}
-						   	console.log(names)
-						   	console.log(values)	  
+						   	
 						</script>
 					
 						<div class="row" style="margin-top:20px">
