@@ -1,0 +1,72 @@
+<!--  Página de login do aluno
+Bootstrap base: http://bootsnipp.com/snippets/featured/mix-amp-match-register
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <meta charset="utf-8"> 
+
+    <style>
+      .vcenter {
+        display: inline-block;
+        vertical-align: middle;
+        float: none;
+      }
+    </style>
+
+  </head>
+
+  <body>
+       <div class="container-fluid">
+
+          <div class="row" style="margin-top:200px">
+
+            <div class="col-md-5 col-md-offset-1 vcenter">
+                  <h3 class="form-signin-heading">Entre como aluno</h3> 
+                  <hr class="colorgraph"><br>
+            </div>       
+              
+            <div class="col-md-5 vcenter">
+              <h3 class="form-signin-heading">Entre como professor</h3>    
+              <hr class="colorgraph"><br>
+             </div> 
+                  
+          </div>
+
+          <div class="row">
+              <div class="col-md-5 col-md-offset-1 vcenter">
+                  <form action="/login" method="" name="login_aluno" class="form-signin" id="login_aluno">       <!-- form do login -->         
+                    <input type="text" class="form-control" name="usuario_aluno" id="usuario_aluno" placeholder="Usuário" required="" autofocus="" />
+                    </br>
+                    
+                    <button class="btn btn-lg btn-success btn-block"  n name="submit_aluno" id="submit_aluno" value="Login" type="Submit">Entrar no chat</button>        
+                  </form>     
+              </div>
+
+              <div class="col-md-5 vcenter">
+                   <form action="/login" method="" name="login_mentor" class="form-signin" id="login_mentor">       <!-- form do login -->         
+                    <input type="text" class="form-control" name="usuario_professor" id="usuario_professor" placeholder="Usuário" required="" autofocus="" />
+                    </br>
+                    <input type="text" class="form-control" name="profissao" id="profissao" placeholder="Formação" required=""/>          
+                    </br>
+                    <input type="text" class="form-control" name="faculdade" id="faculdade" placeholder="Faculdade de graduação" required=""/>          
+                    </br>
+                    <button class="btn btn-lg btn-success btn-block"  name="submit_professor" id="submit_professor" value="Login" type="Submit">Entrar no chat</button>        
+                  </form>    
+              </div>
+
+          </div>
+
+      </div>
+  </body>
+</html>
