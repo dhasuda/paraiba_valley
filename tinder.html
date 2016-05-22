@@ -30,65 +30,67 @@
 		    	</div>
 		    </div>
 		</div> -->
-
 		<div class="container">
-			<div class="row" style="margin-top:300px">
-				<script type="text/javascript">
-					  
-					  	function hash(str)
-					  	{
-					  		if(str=='username')
-					  			return "Usuário"
-					  		if(str=='password')
-					  			return "Senha"
-					  		if(str=='first_name')
-					  			return "Nome"
-					  		if(str=='last_name')
-					  			return "Sobrenome"
-					  		if(str=='graduacao')
-					  			return "Graduação"
-					  		if(str=='universidade')
-					  			return "Local de graduação"
-					  		if(str=='conclusao')
-					  			return "Ano de conclusão"
-					  		return "ERRO"
-					  	}
-					    
-					    var parameters = location.search.substring(1).split("&");
-					    var names = Array()
-					    var values=Array()
-					    for (var i = 0; i < parameters.length; i++) 
-					    {
-					    	var aux=parameters[i].split('=')
+			<div class="row" style="margin-top:150px">
+				<div class="col-md-3"></div>
+				
+				<div class = "col-md-6">	
+					<div class="well">
+						<script type="text/javascript">  
+						  	function hash(str)
+						  	{
+						  		if(str=='username')
+						  			return "Usuário"
+						  		if(str=='password')
+						  			return "Senha"
+						  		if(str=='first_name')
+						  			return "Nome"
+						  		if(str=='last_name')
+						  			return "Sobrenome"
+						  		if(str=='graduacao')
+						  			return "Graduação"
+						  		if(str=='universidade')
+						  			return "Local de graduação"
+						  		if(str=='conclusao')
+						  			return "Ano de conclusão"
+						  		return "ERRO"
+						  	}
+						    
+						    var parameters = location.search.substring(1).split("&");
+						    var names = Array()
+						    var values=Array()
+						    for (var i = 0; i < parameters.length; i++) 
+						    {
+						    	var aux=parameters[i].split('=')
 
-					    	names.push(aux[0])
-					    	values.push(aux[1])
-					   	}
-					   	document.write("<div style='margin-top:20px'></div>")
-					   	for (var i = 0; i < parameters.length; i++) 
-					    {
-					    	var aux=parameters[i].split('=')
+						    	names.push(aux[0])
+						    	values.push(aux[1])
+						   	}
+						   	document.write("<div style='margin-top:25px'></div>")
+						   	for (var i = 0; i < parameters.length; i++) 
+						    {
+						    	var aux=parameters[i].split('=')
 
-					    	document.write("<div style='font-size:20px; text-align:center; margin-top:5px'>"+hash(names[i])+": "+values[i]+"</div>")
-					   	}
-					   	console.log(names)
-					   	console.log(values)	  
-				</script>
+						    	document.write("<div style='font-size:20px; text-align:center; margin-top:5px'>"+hash(names[i])+": "+values[i]+"</div>")
+						   	}
+						   	console.log(names)
+						   	console.log(values)	  
+						</script>
+					
+						<div class="row" style="margin-top:20px">
+							<div class="col-md-3 col-md-offset-3">
+								<img src="./no_tinder.jpg"></img>
+							</div>
+							<div class="col-md-3">
+								<img src="./yes_tinder.jpg"></img>
+							</div>
+						</div>	
+					</div>
+						
+				</div>
+
 			</div>
 		</div>
-
-
-		<div class="container">
-			<div class="row" style="margin-top:100px">
-				<div class="col-md-3 col-md-offset-4">
-					<img src="./no_tinder.jpg"></img>
-				</div>
-				<div class="col-md-3">
-					<img src="./yes_tinder.jpg"></img>
-				</div>
-			</div>
-		</div>
-
 
 
 	</body>
