@@ -186,7 +186,7 @@ function logIn(req, res) {
 				// 	fs.createReadStream(endereco).pipe(res);
 				res.writeHead(200, {"Cotent-Type": "text/html"});
 				fs.createReadStream("./tinder.html?nada").pipe(res);
-				}
+				
 				// else {
 				// 	res.writeHead(200, {"Cotent-Type": "text/html"});
 				// 	fs.createReadStream("./tinder.html?nada").pipe(res);
